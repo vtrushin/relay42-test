@@ -1,0 +1,10 @@
+.fields-group {
+    display: grid;
+    gap: 10px
+}
+
+.fields-group-body {
+    display: grid;
+    gap: 20px
+}
+
