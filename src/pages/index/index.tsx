@@ -34,7 +34,7 @@ export const Index: React.FC = () => {
 	return (
 		<div>
 			<h1>Missions</h1>
-			<Search value={search} onChange={handleSearch} />
+			<Search onChange={handleSearch} />
 			<p></p>
 			{missions ? (
 				<div className={styles.missionList}>

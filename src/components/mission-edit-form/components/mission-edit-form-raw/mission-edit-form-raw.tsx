@@ -32,9 +32,15 @@ export const MissionEditFormRaw: React.FC<MissionEditFormRawProps> = ({
 	engineerJobs,
 	destinations,
 }) => {
-	const defaultMembers: Member[] = formData?.members?.some((member) => member.type === 'pilot')
-		? formData.members
-		: [...(formData?.members ?? []), { type: 'pilot', experience: 10 }]
+	const pilotMembers: Member[] = formData?.members?.some((member) => member.type === 'pilot')
+		? []
+		: [{ type: 'pilot', experience: 10 }]
+
+	const passengerMembers: Member[] = formData?.members?.some((member) => member.type === 'pilot')
+		? []
+		: [{ type: 'passenger', age: 18, wealth: 0 }]
+
+	const defaultMembers: Member[] = [...(formData?.members ?? []), ...pilotMembers, ...passengerMembers]
 
 	const methods = useForm<MissionEdit>({
 		defaultValues: {

@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "dev": "vite",
-    "test": "jest",
+    "test": "cypress run",
     "cy:open": "cypress open"
   },
   "author": "",

@@ -18,7 +18,10 @@ describe('Create mission', () => {
 
 		cy.get('[data-testid~="mission-3"]').within(() => {
 			cy.get('[data-testid="name"]').should('contain.text', 'Expedition 3')
-			cy.get('[data-testid="destination"]').should('contain.text', 'marsAlpha116')
+			cy.get('[data-testid="member-pilot-count"]').should('have.text', '1')
+			cy.get('[data-testid="member-engineer-count"]').should('have.text', '1')
+			cy.get('[data-testid="member-passenger-count"]').should('have.text', '2')
+			cy.get('[data-testid="destination"]').should('contain.text', 'Mars Alpha-116')
 			cy.get('[data-testid="departure"]').should('contain.text', '10 Nov 2028')
 		})
 	})

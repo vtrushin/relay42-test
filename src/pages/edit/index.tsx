@@ -47,7 +47,7 @@ export const Edit: React.FC = () => {
 
 	return (
 		<div>
-			<h1>Mission "{mission?.name}"</h1>
+			<h1>Mission "<span data-testid='mission-title'>{mission?.name}</span>"</h1>
 			<MissionEditForm
 				mode='edit'
 				formData={mission}

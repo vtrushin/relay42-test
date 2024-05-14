@@ -13,6 +13,7 @@ type MemberProps = {
 	onDelete: () => void
 	engineerJobs: Dictionary[]
 	selectedPilotsNumber: number
+	selectedPassengersNumber: number
 	selectedEngineerJobs: Set<EngineerMember['job']>
 }
 
@@ -21,6 +22,7 @@ export const MemberLine: React.FC<MemberProps> = ({
 	onDelete,
 	engineerJobs,
 	selectedPilotsNumber,
+	selectedPassengersNumber,
 	selectedEngineerJobs,
 }) => {
 	const { register, formState: { errors }, watch } = useFormContext<MissionEdit>()
@@ -28,7 +30,7 @@ export const MemberLine: React.FC<MemberProps> = ({
 
 	const canSelectPilot = selectedPilotsNumber === 0
 	const canSelectEngineer = selectedEngineerJobs.size < engineerJobs.length
-	const canDelete = type !== 'pilot'
+	const canDelete = type === 'engineer' || (type === 'passenger' && selectedPassengersNumber > 1)
 
 	const fields: Record<Member['type'], () => React.ReactNode> = React.useMemo(() => ({
 		pilot: () => (

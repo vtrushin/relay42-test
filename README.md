@@ -14,5 +14,5 @@
 `npm run dev`
 
 ### Tests
-`npm run cy:open`
+`npm run test`
 

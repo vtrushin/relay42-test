@@ -35,6 +35,9 @@ export const MemberLines: React.FC<MemberLinesProps> = ({
 			.map((member) => (member as EngineerMember).job)
 	)
 
+	const selectedPassengersNumber = members
+		.filter((member) => member.type === 'passenger').length
+
 	const addMember = React.useCallback(() => {
 		appendMember({
 			type: 'passenger',
@@ -49,6 +52,7 @@ export const MemberLines: React.FC<MemberLinesProps> = ({
 						index={index}
 						onDelete={() => removeMember(index)}
 						selectedPilotsNumber={selectedPilotsNumber}
+						selectedPassengersNumber={selectedPassengersNumber}
 						engineerJobs={engineerJobs}
 						selectedEngineerJobs={selectedEngineerJobs}
 					/>
