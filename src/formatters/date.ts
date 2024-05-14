@@ -1,14 +1,13 @@
-import { format, differenceInDays } from 'date-fns'
+import { format } from 'date-fns'
 
 export const formatDate = (date: Date) => format(date, 'd MMM yyyy')
 
 const relativeTimeFormatter = new Intl.RelativeTimeFormat('en', {
 	style: 'short',
 	numeric: 'auto'
-});
+})
 
-export const formatRelativeDate = (date: Date) => {
-	const diff = differenceInDays(date, new Date)
+export const formatRelativeDate = (diff: number) => {
 	return relativeTimeFormatter.format(diff, 'day')
 }
 

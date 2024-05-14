@@ -42,12 +42,14 @@ export const MissionEditFormRaw: React.FC<MissionEditFormRawProps> = ({
 
 	const defaultMembers: Member[] = [...(formData?.members ?? []), ...pilotMembers, ...passengerMembers]
 
+	const defaultValues = {
+		...formData,
+		members: defaultMembers,
+		departure: formData?.departure ?? formatToDateFormField(addDays(new Date(), 1))
+	}
+
 	const methods = useForm<MissionEdit>({
-		defaultValues: {
-			...formData,
-			members: defaultMembers,
-			departure: formatToDateFormField(addDays(new Date(), 1))
-		},
+		defaultValues,
 		shouldUnregister: true,
 	})
 

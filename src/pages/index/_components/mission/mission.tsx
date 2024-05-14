@@ -31,7 +31,7 @@ export const Mission: React.FC<MissionProps> = ({ mission }) => {
 
 	const href = generatePath(routes.edit, { id: mission.id })
 	const departure = new Date(mission.departure)
-	const diffDate = differenceInCalendarDays(departure, new Date)
+	const diffDate = differenceInCalendarDays(departure, new Date())
 
 	return (
 		<Link to={href} className={styles.mission} data-testid={`mission mission-${mission.id}`}>
@@ -52,10 +52,9 @@ export const Mission: React.FC<MissionProps> = ({ mission }) => {
 				<div className='smaller-text' data-testid='departure'>
 					{formatDate(departure)}
 					<span className={styles.delimiter}> • </span>
-					{diffDate > 0
-						? formatRelativeDate(departure)
-						: <span className={styles.departed}>today</span>
-					}
+					<span className={Math.abs(diffDate) === 0 ? styles.departed : ''}>
+						{formatRelativeDate(diffDate)}
+					</span>
 				</div>
 			</div>
 		</Link>
