@@ -3,29 +3,17 @@ import { Mission } from './_components/mission/mission.tsx'
 import { NewMission } from './_components/new-mission/new-mission.tsx'
 import { useMissions } from '../../api/query.ts'
 import styles from './index.module.css'
-import { toast } from 'react-hot-toast'
 import { Search } from '../../components/search/search.tsx'
+import { useRequestStateToast } from '../../hooks/useRequestStateToast.ts'
 
 export const Index: React.FC = () => {
 	const [search, setSearch] = React.useState('')
-	const id = React.useRef<string>()
 	const { data: missions, isFetching: missionsIsFetching, error: missionsError } = useMissions({ search })
 
-	React.useEffect(() => {
-		if (missionsIsFetching) {
-			id.current = toast.loading('Loading...')
-		} else if (id.current) {
-			toast.dismiss(id.current)
-		}
-	}, [missionsIsFetching])
-
-	React.useEffect(() => {
-		if (missionsError) {
-			toast.error('Loading error', {
-				duration: Infinity
-			})
-		}
-	}, [missionsError])
+	useRequestStateToast({
+		isFetching: missionsIsFetching,
+		isError: missionsError ? missionsError.message : false
+	})
 
 	const handleSearch = React.useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
 		setSearch(event.target.value)
