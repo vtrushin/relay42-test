@@ -1,13 +1,13 @@
-const { defineConfig } = require('vite')
+import { defineConfig } from 'vite'
 
 module.exports = defineConfig({
-	publicDir: 'assets',
+	publicDir: 'public',
 	css: {
 		modules: {
 			localsConvention: 'camelCase'
 		}
 	},
 	server: {
-		port: '5173'
+		port: 5173
 	}
 })
