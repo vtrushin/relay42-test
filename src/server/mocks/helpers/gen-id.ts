@@ -1,7 +1,7 @@
 export const genId = (() => {
 	let i = 0
 	return () => {
-		i ++
+		i++
 		return String(i)
 	}
 })()

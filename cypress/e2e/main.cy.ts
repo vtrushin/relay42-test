@@ -9,7 +9,10 @@ describe('Load missions', () => {
 		cy.visit('/')
 		cy.get('[data-testid~="mission-1"]').click()
 		cy.url().should('include', '/edit/1')
-		cy.get('[data-testid~="mission-title"]').should('have.text', 'Expedition 1')
+		cy.get('[data-testid~="mission-title"]').should(
+			'have.text',
+			'Expedition 1',
+		)
 	})
 
 	it('Should refer to a new mission when click', () => {
@@ -25,7 +28,3 @@ describe('Load missions', () => {
 		cy.get('[data-testid~="mission-2"]').should('not.exist')
 	})
 })
-
-
-
-

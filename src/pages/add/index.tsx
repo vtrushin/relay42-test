@@ -1,10 +1,10 @@
 import React from 'react'
+import { toast } from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
+import { addMission } from '../../api/missions.ts'
 import { MissionEditForm } from '../../components/mission-edit-form/mission-edit-form.tsx'
 import { routes } from '../../router.tsx'
 import { MissionEdit } from '../../types/types.ts'
-import { addMission } from '../../api/missions.ts'
-import { toast } from 'react-hot-toast'
 
 export const Create: React.FC = () => {
 	const navigate = useNavigate()
@@ -27,7 +27,7 @@ export const Create: React.FC = () => {
 		<div>
 			<h1>New mission</h1>
 			<MissionEditForm
-				mode='create'
+				mode="create"
 				formData={null}
 				onSubmit={handleSubmit}
 				onCancel={handleCancel}

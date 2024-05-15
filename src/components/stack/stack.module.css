@@ -1,7 +1,7 @@
 .stack {
-    --direction: column;
-    --gap: 10px;
-    display: flex;
-    flex-direction: var(--direction);
-    gap: var(--gap);
+	--direction: column;
+	--gap: 10px;
+	display: flex;
+	flex-direction: var(--direction);
+	gap: var(--gap);
 }

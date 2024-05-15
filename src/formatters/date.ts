@@ -4,7 +4,7 @@ export const formatDate = (date: Date) => format(date, 'd MMM yyyy')
 
 const relativeTimeFormatter = new Intl.RelativeTimeFormat('en', {
 	style: 'short',
-	numeric: 'auto'
+	numeric: 'auto',
 })
 
 export const formatRelativeDate = (diff: number) => {

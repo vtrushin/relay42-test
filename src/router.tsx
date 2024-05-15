@@ -15,28 +15,32 @@ export const router = createBrowserRouter([
 		children: [
 			{
 				index: true,
-				lazy: () => import('./pages/index').then(
-					(module) => ({ Component: module.Index })
-				),
+				lazy: () =>
+					import('./pages/index').then((module) => ({
+						Component: module.Index,
+					})),
 			},
 			{
 				path: routes.add,
-				lazy: () => import('./pages/add').then(
-					(module) => ({ Component: module.Create })
-				),
+				lazy: () =>
+					import('./pages/add').then((module) => ({
+						Component: module.Create,
+					})),
 			},
 			{
 				path: routes.edit,
-				lazy: () => import('./pages/edit').then(
-					(module) => ({ Component: module.Edit })
-				),
+				lazy: () =>
+					import('./pages/edit').then((module) => ({
+						Component: module.Edit,
+					})),
 			},
 			{
 				path: '*',
-				lazy: () => import('./pages/no-match').then(
-					(module) => ({ Component: module.NoMatch })
-				),
-			}
-		]
-	}
+				lazy: () =>
+					import('./pages/no-match').then((module) => ({
+						Component: module.NoMatch,
+					})),
+			},
+		],
+	},
 ])

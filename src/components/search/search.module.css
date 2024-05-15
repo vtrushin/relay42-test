@@ -1,23 +1,23 @@
 .search {
-    position: relative;
+	position: relative;
 }
 
 .search input {
-    background-color: #f2f2f2;
-    border: none;
-    width: 100%;
-    padding: 10px 10px 10px 40px;
-    font-size: 24px;
-    border-radius: 10px;
-    font-family: inherit;
-    box-sizing: border-box;
+	background-color: #f2f2f2;
+	border: none;
+	width: 100%;
+	padding: 10px 10px 10px 40px;
+	font-size: 24px;
+	border-radius: 10px;
+	font-family: inherit;
+	box-sizing: border-box;
 }
 
 .icon {
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    margin-top: -12px;
-    font-size: 24px;
-    line-height: 24px;
+	position: absolute;
+	left: 10px;
+	top: 50%;
+	margin-top: -12px;
+	font-size: 24px;
+	line-height: 24px;
 }

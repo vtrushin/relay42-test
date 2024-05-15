@@ -1,11 +1,11 @@
 .submit {
-    background-color: #652fff;
-    font-family: inherit;
-    font-size: inherit;
-    padding: 8px 15px;
-    border-radius: 5px;
-    border: none;
-    color: white;
-    margin: 0;
-    cursor: pointer;
+	background-color: #652fff;
+	font-family: inherit;
+	font-size: inherit;
+	padding: 8px 15px;
+	border-radius: 5px;
+	border: none;
+	color: white;
+	margin: 0;
+	cursor: pointer;
 }

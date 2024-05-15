@@ -1,63 +1,62 @@
 .mission {
-    border: 1px solid rgba(0, 0, 0, .2);
-    padding: 15px;
-    border-radius: 10px;
-    text-decoration: unset;
-    color: unset;
-    position: relative;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	padding: 15px;
+	border-radius: 10px;
+	text-decoration: unset;
+	color: unset;
+	position: relative;
 }
 
 .mission:hover {
-    border: 2px solid #652fff;
-    padding: 14px;
+	border: 2px solid #652fff;
+	padding: 14px;
 }
 
 .mission-body {
-    display: grid;
-    gap: 2px;
+	display: grid;
+	gap: 2px;
 }
 
 .destination {
 }
 
 .members {
-    display: flex;
-    gap: 10px;
+	display: flex;
+	gap: 10px;
 }
 
 .date {
-
 }
 
 .delimiter {
-    color: #ccc;
+	color: #ccc;
 }
 
 .departed {
-    color: limegreen;
+	color: limegreen;
 }
 
 .edit-hint {
-    position: absolute;
-    left: 0;
-    right: 0;
-    display: grid;
-    justify-items: center;
+	position: absolute;
+	left: 0;
+	right: 0;
+	display: grid;
+	justify-items: center;
 }
 
 .mission:not(:hover)::after {
-    display: none;
+	display: none;
 }
 
 .mission::after {
-    position: absolute;
-    right: -8px;
-    top: -10px;
-    width: 1em;
-    height: 1em;
-    content: '✏️';
-    font-size: 25px;
-    text-align: center;
-    /*background-color: #fff;*/
-    transform: scale(-1, 1);
+	position: absolute;
+	right: -8px;
+	top: -10px;
+	width: 1em;
+	height: 1em;
+	content: '✏️';
+	font-size: 25px;
+	text-align: center;
+	/*background-color: #fff;*/
+	transform: scale(-1, 1);
 }

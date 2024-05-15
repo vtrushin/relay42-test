@@ -1,6 +1,11 @@
 import { http, delay, HttpResponse } from 'msw'
-import { getMission, addMission, updateMission, getMissions } from '../model/missions.ts'
 import { MissionEdit } from '../../../types/types.ts'
+import {
+	getMission,
+	addMission,
+	updateMission,
+	getMissions,
+} from '../model/missions.ts'
 
 export const getMissionsHandler = http.get<{ search: string }>(
 	'/api/missions',
@@ -9,7 +14,7 @@ export const getMissionsHandler = http.get<{ search: string }>(
 		const search = url.searchParams.get('search') ?? ''
 		await delay()
 		return HttpResponse.json(getMissions({ search }))
-	}
+	},
 )
 
 export const getMissionHandler = http.get<{ missionId: string }>(
@@ -17,7 +22,7 @@ export const getMissionHandler = http.get<{ missionId: string }>(
 	async ({ params }) => {
 		await delay()
 		return HttpResponse.json(getMission(params.missionId))
-	}
+	},
 )
 
 export const addMissionHandler = http.post<never, MissionEdit>(
@@ -29,24 +34,24 @@ export const addMissionHandler = http.post<never, MissionEdit>(
 		return HttpResponse.json({
 			success: true,
 			payload: { id },
-			error: null
+			error: null,
 		})
-	}
+	},
 )
 
-export const updateMissionHandler = http.post<{ missionId: string }, MissionEdit>(
-	'/api/missions/:missionId',
-	async ({ params, request }) => {
-		await delay()
-		const mission = await request.json()
-		updateMission(params.missionId, mission)
-		return HttpResponse.json({
-			success: true,
-			payload: {},
-			error: null
-		})
-	}
-)
+export const updateMissionHandler = http.post<
+	{ missionId: string },
+	MissionEdit
+>('/api/missions/:missionId', async ({ params, request }) => {
+	await delay()
+	const mission = await request.json()
+	updateMission(params.missionId, mission)
+	return HttpResponse.json({
+		success: true,
+		payload: {},
+		error: null,
+	})
+})
 
 export const missionsHandlers = [
 	getMissionsHandler,

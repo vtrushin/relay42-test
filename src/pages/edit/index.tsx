@@ -1,12 +1,12 @@
 import React from 'react'
+import { toast } from 'react-hot-toast'
 import { useNavigate, useParams } from 'react-router-dom'
+import { updateMission } from '../../api/missions.ts'
 import { useInvalidateMission, useMission } from '../../api/query.ts'
 import { MissionEditForm } from '../../components/mission-edit-form/mission-edit-form.tsx'
-import { updateMission } from '../../api/missions.ts'
-import { MissionEdit } from '../../types/types.ts'
-import { routes } from '../../router.tsx'
-import { toast } from 'react-hot-toast'
 import { useRequestStateToast } from '../../hooks/useRequestStateToast.ts'
+import { routes } from '../../router.tsx'
+import { MissionEdit } from '../../types/types.ts'
 
 export const Edit: React.FC = () => {
 	const navigate = useNavigate()
@@ -16,19 +16,19 @@ export const Edit: React.FC = () => {
 	const {
 		data: mission,
 		isFetching: missionIsFetching,
-		error: missionError
+		error: missionError,
 	} = useMission(missionId!, { enabled: Boolean(missionId) })
 
 	useRequestStateToast({
 		isFetching: missionIsFetching,
-		isError: missionError ? missionError.message : false
+		isError: missionError ? missionError.message : false,
 	})
 
 	const handleSubmit = async (formData: MissionEdit) => {
 		try {
 			await updateMission(missionId!, formData)
 			toast.success(`Mission "${formData.name}" updated`, {
-				duration: 2000
+				duration: 2000,
 			})
 			await invalidateMission(missionId!)
 			navigate(routes.root)
@@ -48,9 +48,12 @@ export const Edit: React.FC = () => {
 
 	return mission ? (
 		<div>
-			<h1>Mission "<span data-testid='mission-title'>{mission?.name}</span>"</h1>
+			<h1>
+				Mission &quot;
+				<span data-testid="mission-title">{mission?.name}</span>&quot;
+			</h1>
 			<MissionEditForm
-				mode='edit'
+				mode="edit"
 				formData={mission}
 				onSubmit={handleSubmit}
 				onCancel={handleCancel}

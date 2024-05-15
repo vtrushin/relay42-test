@@ -1,40 +1,40 @@
 .select {
-    display: inline-block;
-    position: relative;
-    min-width: 50px;
+	display: inline-block;
+	position: relative;
+	min-width: 50px;
 }
 
 .select select {
-    appearance: none;
-    -webkit-appearance: none;
-    background-color: #f2f2f2;
-    border: none;
-    font-family: inherit;
-    font-size: inherit;
-    width: 100%;
-    padding: 5px 20px 5px 5px;
-    border-radius: 5px;
+	appearance: none;
+	-webkit-appearance: none;
+	background-color: #f2f2f2;
+	border: none;
+	font-family: inherit;
+	font-size: inherit;
+	width: 100%;
+	padding: 5px 20px 5px 5px;
+	border-radius: 5px;
 }
 
 .select::before,
 .select::after {
-    --size: 0.3rem;
-    content: "";
-    position: absolute;
-    right: 5px;
-    pointer-events: none;
+	--size: 0.3rem;
+	content: '';
+	position: absolute;
+	right: 5px;
+	pointer-events: none;
 }
 
 .select::before {
-    border-left: var(--size) solid transparent;
-    border-right: var(--size) solid transparent;
-    border-bottom: var(--size) solid black;
-    bottom: calc(50% + 1px);
+	border-left: var(--size) solid transparent;
+	border-right: var(--size) solid transparent;
+	border-bottom: var(--size) solid black;
+	bottom: calc(50% + 1px);
 }
 
 .select::after {
-    border-left: var(--size) solid transparent;
-    border-right: var(--size) solid transparent;
-    border-top: var(--size) solid black;
-    top: calc(50% + 1px);
+	border-left: var(--size) solid transparent;
+	border-right: var(--size) solid transparent;
+	border-top: var(--size) solid black;
+	top: calc(50% + 1px);
 }

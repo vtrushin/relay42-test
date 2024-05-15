@@ -9,11 +9,11 @@ type SearchProps = {
 export const Search: React.FC<SearchProps> = ({ onChange }) => {
 	const handleChange = React.useMemo(
 		() => debounce(onChange, 300),
-		[onChange]
+		[onChange],
 	)
 
 	return (
-		<div className={styles.search} data-testid='search'>
+		<div className={styles.search} data-testid="search">
 			<input onChange={handleChange} />
 			<div className={styles.icon}>🔎</div>
 		</div>

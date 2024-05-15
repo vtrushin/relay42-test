@@ -3,7 +3,7 @@ import { toast } from 'react-hot-toast'
 
 export const useRequestStateToast = ({
 	isFetching,
-	isError
+	isError,
 }: {
 	isFetching?: boolean
 	isError?: string | boolean
@@ -21,7 +21,7 @@ export const useRequestStateToast = ({
 	React.useEffect(() => {
 		if (isError) {
 			toast.error('Loading error', {
-				duration: Infinity
+				duration: Infinity,
 			})
 		}
 	}, [isError])

@@ -1,19 +1,19 @@
-import React from 'react'
-import { TextInput } from '../../../text-input/text-input.tsx'
-import { FormField } from '../../../form-fields/form-field.tsx'
-import { Select } from '../../../select/select.tsx'
-import { FormProvider, useForm } from 'react-hook-form'
-import { FieldLine } from '../../../fields-line/field-line.tsx'
-import { FieldsGroup } from '../../../fields-group/fields-group.tsx'
-import { Member, MissionEdit } from '../../../../types/types.ts'
-import { Submit } from '../../../submit/submit.tsx'
-import { MemberLines } from '../member-lines/member-lines.tsx'
 import { ErrorMessage } from '@hookform/error-message'
+import { addDays } from 'date-fns'
+import React from 'react'
+import { FormProvider, useForm } from 'react-hook-form'
+import { formatToDateFormField } from '../../../../formatters/date.ts'
+import { Member, MissionEdit } from '../../../../types/types.ts'
 import { Dictionary } from '../../../../types/types.ts'
 import { Button } from '../../../button/button.tsx'
+import { FieldsGroup } from '../../../fields-group/fields-group.tsx'
+import { FieldLine } from '../../../fields-line/field-line.tsx'
+import { FormField } from '../../../form-fields/form-field.tsx'
+import { Select } from '../../../select/select.tsx'
 import { Stack } from '../../../stack/stack.tsx'
-import { formatToDateFormField } from '../../../../formatters/date.ts'
-import { addDays } from 'date-fns'
+import { Submit } from '../../../submit/submit.tsx'
+import { TextInput } from '../../../text-input/text-input.tsx'
+import { MemberLines } from '../member-lines/member-lines.tsx'
 
 type MissionEditFormRawProps = {
 	mode: 'create' | 'edit'
@@ -32,20 +32,30 @@ export const MissionEditFormRaw: React.FC<MissionEditFormRawProps> = ({
 	engineerJobs,
 	destinations,
 }) => {
-	const pilotMembers: Member[] = formData?.members?.some((member) => member.type === 'pilot')
+	const pilotMembers: Member[] = formData?.members?.some(
+		(member) => member.type === 'pilot',
+	)
 		? []
 		: [{ type: 'pilot', experience: 10 }]
 
-	const passengerMembers: Member[] = formData?.members?.some((member) => member.type === 'pilot')
+	const passengerMembers: Member[] = formData?.members?.some(
+		(member) => member.type === 'pilot',
+	)
 		? []
 		: [{ type: 'passenger', age: 18, wealth: 0 }]
 
-	const defaultMembers: Member[] = [...(formData?.members ?? []), ...pilotMembers, ...passengerMembers]
+	const defaultMembers: Member[] = [
+		...(formData?.members ?? []),
+		...pilotMembers,
+		...passengerMembers,
+	]
 
 	const defaultValues = {
 		...formData,
 		members: defaultMembers,
-		departure: formData?.departure ?? formatToDateFormField(addDays(new Date(), 1))
+		departure:
+			formData?.departure ??
+			formatToDateFormField(addDays(new Date(), 1)),
 	}
 
 	const methods = useForm<MissionEdit>({
@@ -57,41 +67,63 @@ export const MissionEditFormRaw: React.FC<MissionEditFormRawProps> = ({
 
 	return (
 		<FormProvider {...methods}>
-			<form onSubmit={handleSubmit(onSubmit)} data-testid='mission-edit-form'>
+			<form
+				onSubmit={handleSubmit(onSubmit)}
+				data-testid="mission-edit-form"
+			>
 				<FieldsGroup>
 					<FieldLine>
-						<FormField label='Name'>
-							<TextInput {...register('name', {
-								required: 'Should be a name'
-							})} />
+						<FormField label="Name">
+							<TextInput
+								{...register('name', {
+									required: 'Should be a name',
+								})}
+							/>
 							<ErrorMessage
-								name='name'
-								render={({ message }) => <div className="error-text smaller-text">{message}</div>}
+								name="name"
+								render={({ message }) => (
+									<div className="error-text smaller-text">
+										{message}
+									</div>
+								)}
 							/>
 						</FormField>
-						<FormField label='Destination'>
+						<FormField label="Destination">
 							<Select {...register('destination')}>
 								{destinations.map(({ id, label }) => (
-									<option key={id} value={id}>{label}</option>
+									<option key={id} value={id}>
+										{label}
+									</option>
 								))}
 							</Select>
 						</FormField>
-						<FormField label='Departure'>
-							<TextInput type='date' {...register('departure', {
-								required: 'Incorrect format'
-							})} />
+						<FormField label="Departure">
+							<TextInput
+								type="date"
+								{...register('departure', {
+									required: 'Incorrect format',
+								})}
+							/>
 							<ErrorMessage
-								name='date'
-								render={({ message }) => <div className="error-text smaller-text">{message}</div>}
+								name="date"
+								render={({ message }) => (
+									<div className="error-text smaller-text">
+										{message}
+									</div>
+								)}
 							/>
 						</FormField>
 					</FieldLine>
 					<MemberLines engineerJobs={engineerJobs} />
-					<Stack direction='row' gap='20px'>
+					<Stack direction="row" gap="20px">
 						<Submit>
-							{mode === 'create' ? 'Add mission' : 'Update mission'}
+							{mode === 'create'
+								? 'Add mission'
+								: 'Update mission'}
 						</Submit>
-						<Button onClick={onCancel} data-testid='cancel-button'>Cancel</Button>
+						<Button onClick={onCancel} data-testid="cancel-button">
+							Cancel
+						</Button>
 					</Stack>
 				</FieldsGroup>
 			</form>

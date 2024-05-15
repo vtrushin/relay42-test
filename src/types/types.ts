@@ -16,7 +16,7 @@ export type MissionListItem = {
 	name: string
 	destination: string
 	departure: string
-	members: { type: MemberType, count: number }[]
+	members: { type: MemberType; count: number }[]
 }
 
 export type PilotMember = {

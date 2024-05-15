@@ -83,7 +83,3 @@ describe('Create mission', () => {
 		cy.url().should('not.contain', '/add')
 	})
 })
-
-
-
-

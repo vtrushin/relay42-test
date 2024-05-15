@@ -12,4 +12,4 @@ export const request = async (url: string, init?: RequestInit) => {
 }
 
 export const requestJson = <Response>(url: string, init?: RequestInit) =>
-	request(url, init).then(response => response.json() as Response)
+	request(url, init).then((response) => response.json() as Response)

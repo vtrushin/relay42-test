@@ -6,14 +6,12 @@ type StackProps = React.PropsWithChildren<{
 	gap: string
 }>
 
-export const Stack: React.FC<StackProps> = ({
-	direction,
-	gap,
-	children
-}) => (
+export const Stack: React.FC<StackProps> = ({ direction, gap, children }) => (
 	<div
 		className={styles.stack}
-		style={{ '--direction': direction, '--gap': gap } as React.CSSProperties}
+		style={
+			{ '--direction': direction, '--gap': gap } as React.CSSProperties
+		}
 	>
 		{children}
 	</div>

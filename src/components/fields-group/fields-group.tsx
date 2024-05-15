@@ -5,13 +5,14 @@ type FieldsGroupProps = React.PropsWithChildren<{
 	title?: React.ReactNode
 }>
 
-export const FieldsGroup: React.FC<FieldsGroupProps> = ({ title, children }) => {
+export const FieldsGroup: React.FC<FieldsGroupProps> = ({
+	title,
+	children,
+}) => {
 	return (
 		<div className={styles.fieldsGroup}>
 			{title}
-			<div className={styles.fieldsGroupBody}>
-				{children}
-			</div>
+			<div className={styles.fieldsGroupBody}>{children}</div>
 		</div>
 	)
 }
