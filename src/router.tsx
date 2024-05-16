@@ -6,7 +6,7 @@ export const routes = {
 	root: '/',
 	add: '/add',
 	edit: '/edit/:id',
-}
+} as const
 
 export const router = createBrowserRouter([
 	{
