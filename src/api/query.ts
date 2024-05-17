@@ -8,22 +8,37 @@ export const useMissions = ({ search }: { search: string }) =>
 		queryFn: () => getMissions({ search }),
 	})
 
-export const missionKey = (missionId: string) => ['mission', missionId]
+export const useInvalidateMissions = () => {
+	const queryClient = useQueryClient()
+	return () =>
+		queryClient.invalidateQueries({
+			queryKey: ['missions'],
+		})
+}
+
+export const getMissionKey = (missionId: string) => ['mission', missionId]
 
 export const useMission = (
 	missionId: string,
 	options: { enabled?: boolean } = {},
 ) =>
 	useQuery({
-		queryKey: missionKey(missionId),
+		queryKey: getMissionKey(missionId),
 		queryFn: () => getMission(missionId),
 		...options,
 	})
 
 export const useInvalidateMission = () => {
 	const queryClient = useQueryClient()
-	return (missionId: string) =>
-		queryClient.invalidateQueries({ queryKey: missionKey(missionId) })
+	const invalidateMissions = useInvalidateMissions()
+	return async (missionId: string) => {
+		await Promise.all([
+			queryClient.invalidateQueries({
+				queryKey: getMissionKey(missionId),
+			}),
+			invalidateMissions(),
+		])
+	}
 }
 
 export const useEngineerJobs = () =>

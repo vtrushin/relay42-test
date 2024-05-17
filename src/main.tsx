@@ -12,7 +12,7 @@ await installMocks()
 const queryClient = new QueryClient({
 	defaultOptions: {
 		queries: {
-			staleTime: Infinity,
+			staleTime: 5_000,
 		},
 	},
 })
