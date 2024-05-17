@@ -9,7 +9,13 @@ import { installMocks } from './server/mocks/installMocks.ts'
 
 await installMocks()
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+	defaultOptions: {
+		queries: {
+			staleTime: Infinity,
+		},
+	},
+})
 
 const rootEl: HTMLDivElement = document.querySelector('#root')!
 
